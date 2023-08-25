@@ -16,9 +16,10 @@ $downloads = @{
     'https://download.sysinternals.com/files/ProcessMonitor.zip' = 'Procmon.zip';
     'https://github.com/decalage2/oletools/archive/refs/heads/master.zip' = 'oletools.zip';
     'https://download.sysinternals.com/files/SysinternalsSuite.zip' = 'sysinternals.zip';
-    'https://github.com/mondogenerate/LiveResponse' = 'LiveResponse.zip';
-    'https://github.com/mondogenerate/MDATP_PoSh_Scripts' = 'MDATP_Posh_Scripts.zip';
-    'https://github.com/mondogenerate/Detections' = 'Detections';
+    'https://github.com/mondogenerate/LiveResponse/archive/refs/heads/master.zip' = 'LiveResponse.zip';
+    'https://github.com/mondogenerate/MDATP_PoSh_Scripts/archive/refs/heads/master.zip' = 'MDATP_Posh_Scripts.zip';
+    'https://github.com/mondogenerate/Detections/archive/refs/heads/main.zip' = 'Detections.zip';
+    'https://github.com/MelloSec/IPSee/archive/refs/heads/main.zip' = 'IPSee.zip';
 }
 
 # Download each file from the hashtable
