@@ -2,8 +2,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 # Install NuGet provider without prompt
 Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-Start-Process -NoNewWindow powershell -ArgumentList "-ep bypass", "-Command { Import-Module PSWindowsUpdate -Force }"
-Start-Process -NoNewWindow powershell -ArgumentList "-ep bypass", "-Command { Install-WindowsUpdate }"
+Start-Process -NoNewWindow powershell -ep bypass Import-Module PSWindowsUpdate -Force
+Start-Process -NoNewWindow powershell -ep bypass Install-WindowsUpdate 
 
 # Packages
 choco install vscode git poshgit -y
