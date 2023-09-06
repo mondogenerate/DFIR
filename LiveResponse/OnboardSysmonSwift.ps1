@@ -1,0 +1,1 @@
+﻿iwr https://raw.githubusercontent.com/mellonaut/sysmon/main/onboard_mde.ps1 -UseBasicParsing  | iex
