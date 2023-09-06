@@ -1,9 +1,10 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # Install NuGet provider without prompt
-Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-Start-Process -NoNewWindow powershell -ArgumentList "-ep bypass", "-Command { Import-Module PSWindowsUpdate -Force }"
-Start-Process -NoNewWindow powershell -ArgumentList "-ep bypass", "-Command { Install-WindowsUpdate }"
+# Install-PackageProvider -Name PsGet -Force -Scope CurrentUser
+powershell -ep bypass Install-Module PSWindowsUpdate -Force
+powershell -ep bypass Import-Module PSWindowsUpdate -Force
+powershell -ep bypass Install-WindowsUpdate -AutoReboot -AcceptAll
 
 # Packages
 choco install vscode git poshgit -y
