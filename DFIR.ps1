@@ -68,3 +68,26 @@ iwr https://raw.githubusercontent.com/mellonaut/sysmon/main/onboard_swift.ps1 -U
 # Start Velociraptor after downloading
 Start-Process "$folder\Velociraptor.exe"
 
+# Sparrow - CISA IR Script - 
+# Dashboard - https://github.com/cisagov/Sparrow/releases/download/v1.0/aviary.xml
+$modules = @('AzureAD', 'MSOnline', 'ExchangeOnlineManagement', 'Microsoft.Graph')
+
+foreach ($module in $modules) {
+    # Check if the module is installed
+    if (-not (Get-Module -ListAvailable -Name $module)) {
+        # Install the module
+        Write-Host "Installing $module..."
+        Install-Module -Name $module -Force -AllowClobber -Scope CurrentUser
+    }
+
+    # Check if the module is imported
+    if (-not (Get-Module -Name $module)) {
+        # Import the module
+        Write-Host "Importing $module..."
+        Import-Module -Name $module
+    } else {
+        Write-Host "$module is already imported."
+    }
+}
+[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
+Invoke-WebRequest 'https://github.com/cisagov/Sparrow/raw/develop/Sparrow.ps1' -OutFile 'Sparrow.ps1' -UseBasicParsing; .\Sparrow.ps1
