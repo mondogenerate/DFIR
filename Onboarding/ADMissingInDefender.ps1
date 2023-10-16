@@ -79,6 +79,30 @@ $missingDetails | Format-Table
 $missingDetails | Export-Csv "MissingInDefender.csv" -NoTypeInformation
 
 
+# Import intune.csv
+$intuneDevices = Import-Csv -Path "intune.csv"
+
+# # Correlate with devices not in Defender
+# $correlatedDetails = $notInDefender | ForEach-Object {
+#     $currentDeviceName = $_
+#     $intuneInfo = $intuneDevices | Where-Object { $_.'Device name'.Trim() -eq $currentDeviceName }
+
+#     if ($intuneInfo) {
+#         [PSCustomObject]@{
+#             'Device Name'          = $currentDeviceName;
+#             'Primary user UPN'     = $intuneInfo.'Primary user UPN';
+#             'Join Type'            = $intuneInfo.'JoinType';
+#             'Last check-in'        = $intuneInfo.'Last check-in';
+#             'Manufacturer'         = $intuneInfo.'Manufacturer';
+#         }
+#     }
+# }
+
+# # Output the correlated results to console
+# $correlatedDetails | Format-Table
+
+# # Save these correlated results to a file
+# $correlatedDetails | Export-Csv "CorrelatedMissingInDefender.csv" -NoTypeInformation
 
 
 
