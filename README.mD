@@ -13,7 +13,7 @@ https://github.com/mellonaut/SysmonTools
 # Sentinel Queries
 https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Windows%20Security%20Events/Hunting%20Queries/CommandsexecutedbyWMIonnewhosts-potentialImpacket.yaml
 
-# KQl for DFIR
+# KQL for DFIR
 https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/leveraging-the-power-of-kql-in-incident-response/ba-p/3044795
 https://github.com/reprise99/kql-for-dfir
 
