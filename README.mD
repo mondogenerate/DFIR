@@ -3,6 +3,16 @@
 # AzureAD IR Cheatsheet
 https://14518100.fs1.hubspotusercontent-na1.net/hubfs/14518100/Cheat%20Sheets/Azure%20Incident%20Response%20Cheat%20Sheet.pdf
 
+# SocMonkey Cheatsheets
+https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/dfir-digital-forensics-and-incident-response
+https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/blue-defense
+
+# Sysmon Tools
+https://github.com/mellonaut/SysmonTools
+
+# Sentinel Queries
+https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Windows%20Security%20Events/Hunting%20Queries/CommandsexecutedbyWMIonnewhosts-potentialImpacket.yaml
+
 # KQl for DFIR
 https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/leveraging-the-power-of-kql-in-incident-response/ba-p/3044795
 https://github.com/reprise99/kql-for-dfir
