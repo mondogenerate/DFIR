@@ -15,6 +15,9 @@ https://github.com/reprise99/kql-for-dfir/blob/main/Office%20365/README.md
 https://github.com/reprise99/kql-for-dfir/blob/main/Windows/README.md
 https://github.com/reprise99/kql-for-dfir/blob/main/Active%20Directory/README.md
 
+#  The logs you dont have
+https://kqlquery.com/posts/kql-incident-response-everything-else/
+
 
 # Initial Investigations
 Run our automated investigation tools first to see what picks up before we dive into KQL or endpoint
