@@ -1,35 +1,35 @@
-# DFIR Workflows
+## DFIR Resources
 
 # AzureAD IR Cheatsheet
 https://14518100.fs1.hubspotusercontent-na1.net/hubfs/14518100/Cheat%20Sheets/Azure%20Incident%20Response%20Cheat%20Sheet.pdf
 
-# SocMonkey Cheatsheets
+#### SocMonkey Cheatsheets
 https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/dfir-digital-forensics-and-incident-response
 https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/blue-defense
 
-# Sysmon Tools
+### Sysmon Tools
 https://github.com/mellonaut/SysmonTools
 
-# Sentinel Queries
+### Sentinel Queries
 https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Windows%20Security%20Events/Hunting%20Queries/CommandsexecutedbyWMIonnewhosts-potentialImpacket.yaml
 
-# KQL for DFIR
+### KQL for DFIR
 https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/leveraging-the-power-of-kql-in-incident-response/ba-p/3044795
 https://github.com/reprise99/kql-for-dfir
 
-# Great Breakdows of AAD IR / Official Module with KQL
+### Great Breakdows of AAD IR / Official Module with KQL
 https://github.com/reprise99/kql-for-dfir/tree/main/Azure%20Active%20Directory
 https://github.com/reprise99/kql-for-dfir/blob/main/Combined%20Queries/README.md
 https://github.com/reprise99/kql-for-dfir/blob/main/Office%20365/README.md
-# Windows and AD
+
+### Windows and AD
 https://github.com/reprise99/kql-for-dfir/blob/main/Windows/README.md
 https://github.com/reprise99/kql-for-dfir/blob/main/Active%20Directory/README.md
 
-#  The logs you dont have
+### KQL - The logs you DONT have
 https://kqlquery.com/posts/kql-incident-response-everything-else/
 
-
-# Initial Investigations
+## Initial Investigations
 Run our automated investigation tools first to see what picks up before we dive into KQL or endpoint
 
 # Sparrow - CISA IR Script - 
