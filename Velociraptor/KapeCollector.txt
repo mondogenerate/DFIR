@@ -1,0 +1,71 @@
+
+# Artifacts
+Windows.KapeFiles.Targets (_KapeTriage)
+Windows.Network.NetstatEnriched
+Windows.System.Pslist
+Windows.Sysinternals.Autoruns
+
+# Example command to modify
+velociraptor.exe --config server.config.yaml -v artifacts collect
+   Server.Utils.CreateCollector
+   --args OS=Windows
+   --args artifacts='["""Windows.KapeFiles.Targets"""]'
+   --args parameters='{"""Windows.KapeFiles.Targets""":{}}'
+   --args target=ZIP
+   --args opt_admin=N
+   --args opt_prompt=N
+   --output collector.zip
+
+   # Test
+   velociraptor.exe --config server.config.yaml -v artifacts collect
+   Server.Utils.CreateCollector
+   --args OS=Windows
+   --args artifacts='["""Windows.KapeFiles.Targets""", """Windows.Network.NetstatEnriched""", """Windows.System.Pslist""", """Windows.Sysinternals.Autoruns"""]'
+   --args parameters='{"""Windows.KapeFiles.Targets""":{_KapeTriage}, """Windows.Network.NetstatEnriched""":{}, """Windows.System.Pslist""":{}, """Windows.Sysinternals.Autoruns""":{}}'
+   --args target=ZIP
+   --args opt_admin=N
+   --args opt_prompt=N
+   --output collector.zip
+
+# Modules
+ KAPE & PowerShell
+• Modules
+• Hindsight
+• NirSoft BrowsingHistoryView
+• NirSoft WebBrowserDownloads
+• AppCompatCacheParser
+• PECmd
+• AmcacheParser
+• SBECmd
+• EVTXECmd
+• !EVTXECmd-Triage (Custom)
+• Hayabusa Offline Logon and EventLogs
+• MFTeCmd FileListing
+• Misc:
+• Expand-Archive
+• Invoke-KAPE (scalable!)
+• Export to Excel
+
+# Kape
+KAPE (Register and $$$ if you can!)
+• Hindsight (obsidianforensics GitHub)
+• BrowsingHistoryView (NirSoft
+• WebBrowserDownloads (NirSoft)
+• Hayabusa (Yamato-security GitHub)
+• Invoke-Kape (swisscom/invoke-forensics GitHub)
+• KAPE_Rapid_Triage_Excel.ps1 (secure-cake GitHub)
+
+# Hi-fi Indicators
+RTW: Event Context & IOCs
+• Start from Event Context
+• Filter out “Normal”
+• Focus on Meaningful Impact (MIND)
+• PSlist w/CMD*
+• Netstat Enriched (Raddr.Port)
+• MFT FL (exe & archive)
+• EVTX, Web & Execution
+• Hayabusa (High & Critical)
+• EVTX (filtered)
+• BrowserDownloadsView
+• Timeline
+• SBE - UsrClass
