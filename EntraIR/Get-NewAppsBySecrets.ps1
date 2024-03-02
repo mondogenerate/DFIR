@@ -42,8 +42,8 @@ $filteredCredentials = $allCredentials | Where-Object { $_.StartDateTime -gt $Da
 Write-Host "Newly Created App Credentials:"  -ForeGround DarkBlue
 $filteredCredentials | Format-Table DisplayName, StartDateTime, EndDateTime, KeyId
 
-# Retrieve all applications only once to optimize the process
-$applications = Get-AzADApplication
+# Use the previously retrieved Applications again to speed things up
+$applications = $allApps
 
 Write-Host "Correlating filtered Application Credentials w/ Apps and Service Principals." -ForeGround DarkBlue
 foreach ($cred in $filteredCredentials) {
