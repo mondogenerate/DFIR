@@ -14,7 +14,7 @@ $allCredentials = $allApps | Get-AzADAppCredential
 $filteredCredentials = $allCredentials | Where-Object { $_.StartDateTime -gt $DateLimit }
 
 # Display the filtered credentials
-Write-Host "Newly Created App Credentials:"  -ForeGround DarkYellow
+Write-Host "Newly Created App Credentials:"  -ForeGround DarkBlue
 $filteredCredentials | Format-Table DisplayName, StartDateTime, EndDateTime, KeyId
 
 # Retrieve all applications only once to optimize the process
