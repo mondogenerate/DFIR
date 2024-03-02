@@ -12,6 +12,13 @@ Connect-AzureAd
 Get-AzureADServicePrincipal -All $true | .\Get-AzureADPSPermissionGrants.ps1 -Preload
 ```
 
+## Get-NewAppsBySecrets.ps1 - Az - Performs all three checks to associate newly created creds with their apps and SPs
+To check for newly created secrets and associate them with their apps and service principals all in one go, just use the script Get-NewAppsBySecrets.ps1 which combines all of the functionality below
+
+```powershell
+.\Get-NewAppsbySecrets.ps1 -DaysBack 90
+```
+
 ## Az Module - Get Creation time of Apps and Secrets, get all service principals
 ```powershell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -42,45 +49,6 @@ $filteredCredentials = $allCredentials | Where-Object { $_.StartDateTime -gt $Da
 # Display the filtered credentials
 Write-Host "Newly Created App Credentials:"
 $filteredCredentials | Format-Table DisplayName, StartDateTime, EndDateTime, KeyId
-
-# Assuming $filteredCredentials contains the filtered credentials information
-
-# Retrieve all applications only once to optimize the process
-$applications = Get-AzADApplication
-
-Write-Host "Correlating filtered Application Credentials w/ Apps and Service Principals" 
-foreach ($cred in $filteredCredentials) {
-    $targetKeyId = $cred.KeyId
-    $matchingApplication = $null
-
-    foreach ($app in $applications) {
-        # Retrieve credentials for the current application
-        $appCredentials = Get-AzADAppCredential -ApplicationId $app.AppId
-        
-        # Check if any of the application's credentials match the KeyId
-        $matchingCredential = $appCredentials | Where-Object { $_.KeyId -eq $targetKeyId }
-        
-        if ($matchingCredential) {
-            $matchingApplication = $app
-            break
-        }
-    }
-    
-    if ($matchingApplication) {
-        Write-Host "Found matching application for KeyId $targetKeyId`: $(${matchingApplication}.DisplayName) with AppId: $(${matchingApplication}.AppId)"
-        
-        # Find the corresponding service principal
-        $servicePrincipal = Get-AzADServicePrincipal -Filter "appId eq '$($matchingApplication.AppId)'"
-        if ($servicePrincipal) {
-            Write-Host "Corresponding Service Principal: $($servicePrincipal.DisplayName)"
-        } else {
-            Write-Host "No corresponding service principal found."
-        }
-    } else {
-        Write-Host "No matching application found for KeyId: $targetKeyId"
-    }
-}
-
 ```
 
 ## Az Module - Find App associated with KeyId of App credential
