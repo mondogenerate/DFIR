@@ -1,4 +1,4 @@
-<#
+en<#
 .SYNOPSIS
 This script retrieves newly created Azure AD application credentials within a specified number of days and matches them with their corresponding applications and service principals. It will show new secrets added to new or existing applications based on StartTime and find the app and principal. Helps to find newly registered apps or privilege escalation on existing ones.
 
@@ -31,7 +31,7 @@ param (
 # Calculate the target date from which to start filtering
 $DateLimit = (Get-Date).AddDays(-$DaysBack)
 
-# Retrieve all applications and their credentials
+# Retrieve all applicffations and their credentials
 $allApps = Get-AzADApplication
 $allCredentials = $allApps | Get-AzADAppCredential
 
