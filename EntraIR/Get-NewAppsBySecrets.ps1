@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+There is no clear way to find creation time of an App Registration. This script retrieves newly created Azure AD application credentials within a specified number of days and matches them with their corresponding applications and service principals. It will show new secrets added to new or existing applications based on StartTime and find the app and principal. Better than nothing!
+
+.DESCRIPTION
+The script filters Azure AD application credentials based on their creation date, showing only those created within the last X days as specified by the user. It then correlates these credentials with their respective Azure AD applications and the corresponding service principals by matching the KeyId of the credentials.
+
+.PARAMETER DaysBack
+The number of days back from the current date to filter newly created credentials. Credentials created within this time frame will be displayed.
+
+.EXAMPLE
+.\Get-NewAppsBySecrets.ps1 -DaysBack 30
+This example retrieves and displays all Azure AD application credentials created in the last 30 days and matches them with their applications and service principals.
+
+.EXAMPLE
+$30 | .\Get-NewAppsBySecrets.ps1.ps1
+This example shows how to pass the DaysBack value through the pipeline, achieving the same result as the first example.
+
+.NOTES
+Author: mellonaut
+Date: 3/2/2024
+# Requires -Modules Az
+
+#>
+
 param (
     [Parameter(Mandatory=$true, ValueFromPipelineByPropertyName=$true)]
     [int]$DaysBack
