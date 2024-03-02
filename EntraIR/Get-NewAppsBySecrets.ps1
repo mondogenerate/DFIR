@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-There is no clear way to find creation time of an App Registration. This script retrieves newly created Azure AD application credentials within a specified number of days and matches them with their corresponding applications and service principals. It will show new secrets added to new or existing applications based on StartTime and find the app and principal. Better than nothing!
+This script retrieves newly created Azure AD application credentials within a specified number of days and matches them with their corresponding applications and service principals. It will show new secrets added to new or existing applications based on StartTime and find the app and principal. Helps to find newly registered apps or privilege escalation on existing ones.
 
 .DESCRIPTION
 The script filters Azure AD application credentials based on their creation date, showing only those created within the last X days as specified by the user. It then correlates these credentials with their respective Azure AD applications and the corresponding service principals by matching the KeyId of the credentials.
