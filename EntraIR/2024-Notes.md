@@ -1,4 +1,9 @@
-# App Registrations, Service Principals, OAuth Grants
+# OAuth /Enterprise Apps
+
+## Consent Grant 
+Comprehensive with detection and blocking information
+
+https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/main/ConsentGrant.md
 
 # Get Permission Grants
 https://gist.githubusercontent.com/psignoret/9d73b00b377002456b24fcb808265c23/raw/7d2bd76a5fafc744bb9d920f8131c9dfb024a1df/Get-AzureADPSPermissionGrants.ps1
