@@ -83,7 +83,7 @@ https://learnsentinel.blog/2022/01/04/azuread-privesc-sentinel/
 
 <br>
 
-## Consent Grant Guide
+# Consent Grant Attacks
 Comprehensive with detection and blocking information
 https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/main/ConsentGrant.md
 
