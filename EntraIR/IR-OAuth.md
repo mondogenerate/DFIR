@@ -7,7 +7,7 @@ To check for newly created secrets and associate them with their apps and servic
 .\Get-NewAppsbySecrets.ps1 -DaysBack 90
 ```
 
-## Az Module - Get Creation time of Apps and Secrets, get all service principals
+## Az - Get Creation time of Apps and Secrets, get all service principals
 ```powershell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
@@ -18,7 +18,7 @@ Get-AzADApplication|Get-AzADAppCredential
 $servicePrincipals = Get-AzADServicePrincipal
 ```
 
-## Az Module - Get App Credentials created in the last X days and associated service principals
+## Az - Get App Credentials created in the last X days and associated service principals
 ```powershell
 # Get App CredentialsCreated in the last X days
 # Define the number of days back you want to filter
@@ -39,7 +39,7 @@ Write-Host "Newly Created App Credentials:"
 $filteredCredentials | Format-Table DisplayName, StartDateTime, EndDateTime, KeyId
 ```
 
-## Az Module - Find App associated with KeyId of App credential
+## Az - Find App associated with KeyId of App credential
 ```powershell
 # Your target KeyId
 $targetKeyId = "092a5430-ba98-4dbb-b797-b46ca254e32b"
