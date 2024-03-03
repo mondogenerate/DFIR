@@ -3,7 +3,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 # Install-PackageProvider -Name PsGet -Force -Scope CurrentUser
 powershell -ep bypass Install-Module PSWindowsUpdate -Force
 powershell -ep bypass Import-Module PSWindowsUpdate -Force
-powershell -ep bypass Install-WindowsUpdate -AutoReboot -AcceptAll
+powershell -ep bypass Install-PSWindowsUpdate -AutoReboot -AcceptAll
 
 # Packages
 choco install vscode git poshgit -y
