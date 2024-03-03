@@ -78,7 +78,7 @@ if ($matchingApplication -ne $null) {
 }
 ```
 
-## AuditLogs / KQL - Detecting privilege escalation via changes to service principals
+### AuditLogs / KQL - Detecting privilege escalation via changes to service principals
 https://learnsentinel.blog/2022/01/04/azuread-privesc-sentinel/
 
 <br>
