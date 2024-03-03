@@ -85,7 +85,7 @@ https://learnsentinel.blog/2022/01/04/azuread-privesc-sentinel/
 
 # MicrosoftGraphActivityLogs - KQL to Query the Graph logs
 
-## KQL - Enumeration Tool Detection
+## KQL - Azurehound Detection by Endpoints
 A query that will look back for 35 minutes and summarize all Graph endpoints called by objectId requesting them. Then I calculate a confidence score based on how many of the Graph endpoints in my defined list are called and if this score is above a certain threshold, will return more information.
 
 ```kql
