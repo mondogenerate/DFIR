@@ -1,26 +1,5 @@
 # OAuth Apps
 
-## Consent Grant Guide
-Comprehensive with detection and blocking information
-https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/main/ConsentGrant.md
-
-Granting the correct way per-user using PwSh
-https://github.com/MicrosoftDocs/entra-docs/blob/main/docs/identity/enterprise-apps/grant-consent-single-user.md
-
-## psignoret - Query Permissions granted to Service Principals
-```powershell
-iwr https://gist.githubusercontent.com/psignoret/9d73b00b377002456b24fcb808265c23/raw/7d2bd76a5fafc744bb9d920f8131c9dfb024a1df/Get-AzureADPSPermissionGrants.ps1 -o Get-AzureADPSPermissionGrants.ps1
-iwr https://gist.githubusercontent.com/psignoret/9d73b00b377002456b24fcb808265c23/raw/7d2bd76a5fafc744bb9d920f8131c9dfb024a1df/Get-AzureADPSPermissions.ps1 -o Get-AzureADPSPermissions.ps1 
-
-Connect-AzureAd
-
-# View all delegated permissions
-./Get-AzureADPSPermissions.ps1
-
-# View Permission grants
-Get-AzureADServicePrincipal -All $true | .\Get-AzureADPSPermissionGrants.ps1 -Preload
-```
-
 ## Get-NewAppsBySecrets.ps1 - Az - Find New Secrets Created/Added to Applications and associate them with service Principals 
 To check for newly created secrets and associate them with their apps and service principals all in one go, just use the script Get-NewAppsBySecrets.ps1 which combines all of the functionality below
 
@@ -102,5 +81,25 @@ if ($matchingApplication -ne $null) {
 ## AuditLogs / KQL - Detecting privilege escalation via changes to service principals
 https://learnsentinel.blog/2022/01/04/azuread-privesc-sentinel/
 
-## Resources
+<br>
+
+## Consent Grant Guide
+Comprehensive with detection and blocking information
 https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/main/ConsentGrant.md
+
+Granting the correct way per-user using PwSh
+https://github.com/MicrosoftDocs/entra-docs/blob/main/docs/identity/enterprise-apps/grant-consent-single-user.md
+
+## psignoret - Query Permissions granted to Service Principals
+```powershell
+iwr https://gist.githubusercontent.com/psignoret/9d73b00b377002456b24fcb808265c23/raw/7d2bd76a5fafc744bb9d920f8131c9dfb024a1df/Get-AzureADPSPermissionGrants.ps1 -o Get-AzureADPSPermissionGrants.ps1
+iwr https://gist.githubusercontent.com/psignoret/9d73b00b377002456b24fcb808265c23/raw/7d2bd76a5fafc744bb9d920f8131c9dfb024a1df/Get-AzureADPSPermissions.ps1 -o Get-AzureADPSPermissions.ps1 
+
+Connect-AzureAd
+
+# View all delegated permissions
+./Get-AzureADPSPermissions.ps1
+
+# View Permission grants
+Get-AzureADServicePrincipal -All $true | .\Get-AzureADPSPermissionGrants.ps1 -Preload
+```
