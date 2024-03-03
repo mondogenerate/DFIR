@@ -144,6 +144,11 @@ https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/main/ConsentGrant
 Granting the correct way per-user using PwSh
 https://github.com/MicrosoftDocs/entra-docs/blob/main/docs/identity/enterprise-apps/grant-consent-single-user.md
 
+## Get-CRTReport.ps1 - Delegated Permissions, Check Mailbox Rules, Federation
+```powershell
+Get-CRTReport.ps1 # Sign-in as GA
+```
+
 ## psignoret - Query Permissions granted to Service Principals
 ```powershell
 iwr https://gist.githubusercontent.com/psignoret/9d73b00b377002456b24fcb808265c23/raw/7d2bd76a5fafc744bb9d920f8131c9dfb024a1df/Get-AzureADPSPermissionGrants.ps1 -o Get-AzureADPSPermissionGrants.ps1
