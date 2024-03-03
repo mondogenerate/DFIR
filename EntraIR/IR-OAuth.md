@@ -1,4 +1,4 @@
-# OAuth Apps
+# OAuth / Enterprise Apps
 
 ## Get-NewAppsBySecrets.ps1 - Az - Find New Secrets Created/Added to Applications and associate them with service Principals 
 To check for newly created secrets and associate them with their apps and service principals all in one go, just use the script Get-NewAppsBySecrets.ps1 which combines all of the functionality below
@@ -80,6 +80,60 @@ if ($matchingApplication -ne $null) {
 
 ## AuditLogs / KQL - Detecting privilege escalation via changes to service principals
 https://learnsentinel.blog/2022/01/04/azuread-privesc-sentinel/
+
+<br>
+
+# MicrosoftGraphActivityLogs - KQL to Query the Graph logs
+
+## KQL - Enumeration Tool Detection
+A query that will look back for 35 minutes and summarize all Graph endpoints called by objectId requesting them. Then I calculate a confidence score based on how many of the Graph endpoints in my defined list are called and if this score is above a certain threshold, will return more information.
+
+```kql
+let AzureHoundGraphQueries = dynamic([
+    "https://graph.microsoft.com/beta/servicePrincipals/<UUID>/owners",
+    "https://graph.microsoft.com/beta/groups/<UUID>/owners",
+    "https://graph.microsoft.com/beta/groups/<UUID>/members",
+    "https://graph.microsoft.com/v1.0/servicePrincipals/<UUID>/appRoleAssignedTo",
+    "https://graph.microsoft.com/beta/applications/<UUID>/owners",
+    "https://graph.microsoft.com/beta/devices/<UUID>/registeredOwners",
+    "https://graph.microsoft.com/v1.0/users",
+    "https://graph.microsoft.com/v1.0/applications",
+    "https://graph.microsoft.com/v1.0/groups",
+    "https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+    "https://graph.microsoft.com/v1.0/roleManagement/directory/roleDefinitions",
+    "https://graph.microsoft.com/v1.0/devices",
+    "https://graph.microsoft.com/v1.0/organization",
+    "https://graph.microsoft.com/v1.0/servicePrincipals"
+    ]);
+MicrosoftGraphActivityLogs
+| where ingestion_time() > ago(35m)
+| extend ObjectId = iff(isempty(UserId), ServicePrincipalId, UserId)
+| extend ObjectType = iff(isempty(UserId), "ServicePrincipalId", "UserId")
+| where RequestUri !has "microsoft.graph.delta"
+| extend NormalizedRequestUri = replace_regex(RequestUri, @'[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}', @'<UUID>')
+| extend NormalizedRequestUri = replace_regex(NormalizedRequestUri, @'\?.*$', @'')
+| summarize
+    GraphEndpointsCalled = make_set(NormalizedRequestUri, 1000),
+    IPAddresses = make_set(IpAddress)
+    by ObjectId, ObjectType
+| project
+    ObjectId,
+    ObjectType,
+    IPAddresses,
+    MatchingQueries=set_intersect(AzureHoundGraphQueries, GraphEndpointsCalled)
+| extend ConfidenceScore = round(todouble(array_length(MatchingQueries)) / todouble(array_length(AzureHoundGraphQueries)), 1)
+| where ConfidenceScore > 0.7
+```
+
+## KQL - Detect AzureHound by UserAgent
+
+```kql
+MicrosoftGraphActivityLogs
+| where UserAgent has "azurehound"
+| extend ObjectId = iff(isempty(UserId), ServicePrincipalId, UserId)
+| extend ObjectType = iff(isempty(UserId), "ServicePrincipalId", "UserId")
+| summarize by ObjectId, ObjectType
+```
 
 <br>
 
