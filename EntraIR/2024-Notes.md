@@ -2,8 +2,10 @@
 
 ## Consent Grant Guide
 Comprehensive with detection and blocking information
-
 https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/main/ConsentGrant.md
+
+Granting the correct way per-user using PwSh
+https://github.com/MicrosoftDocs/entra-docs/blob/main/docs/identity/enterprise-apps/grant-consent-single-user.md
 
 ## psignoret - Query Permissions granted to Service Principals
 ```powershell
