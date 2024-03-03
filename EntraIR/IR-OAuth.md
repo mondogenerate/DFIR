@@ -21,7 +21,7 @@ Connect-AzureAd
 Get-AzureADServicePrincipal -All $true | .\Get-AzureADPSPermissionGrants.ps1 -Preload
 ```
 
-## Get-NewAppsBySecrets.ps1 - Az - Performs all three checks to associate newly created creds with their apps and SPs
+## Get-NewAppsBySecrets.ps1 - Az - Find New Secrets Created/Added to Applications and associate them with service Principals 
 To check for newly created secrets and associate them with their apps and service principals all in one go, just use the script Get-NewAppsBySecrets.ps1 which combines all of the functionality below
 
 ```powershell
