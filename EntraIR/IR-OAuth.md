@@ -114,7 +114,7 @@ MicrosoftGraphActivityLogs
 | extend NormalizedRequestUri = replace_regex(NormalizedRequestUri, @'\?.*$', @'')
 | summarize
     GraphEndpointsCalled = make_set(NormalizedRequestUri, 1000),
-    IPAddresses = make_set(IpAddress)
+    IPAddresses = make_set(IPAddress)
     by ObjectId, ObjectType
 | project
     ObjectId,
@@ -123,6 +123,40 @@ MicrosoftGraphActivityLogs
     MatchingQueries=set_intersect(AzureHoundGraphQueries, GraphEndpointsCalled)
 | extend ConfidenceScore = round(todouble(array_length(MatchingQueries)) / todouble(array_length(AzureHoundGraphQueries)), 1)
 | where ConfidenceScore > 0.7
+```
+
+## KQL - AuditLogs for Delegated and Delegated Mail Permissions
+```kql
+AuditLogs
+| where Category == "ApplicationManagement"
+| where ActivityDisplayName in ("Add delegated permission grant", "Add app role assignment to service principal")
+| mv-expand TargetResources
+| where TargetResources.displayName == "Microsoft Graph"
+| mv-expand TargetResources.modifiedProperties
+| extend InitiatedByUserPrincipalName = InitiatedBy.user.userPrincipalName
+| extend AddedPermission = replace_string(tostring(TargetResources_modifiedProperties.newValue),'"','')
+| extend IP = todynamic(InitiatedBy).user.ipAddress
+| extend ServicePrincipalAppId = replace_string(tostring(todynamic(TargetResources).modifiedProperties[5].newValue),'"','')
+| where AddedPermission endswith ".All"
+| project-reorder TimeGenerated, InitiatedByUserPrincipalName, ActivityDisplayName, AddedPermission, IP, ServicePrincipalAppId
+```
+
+```kql
+AuditLogs
+| where Category == "ApplicationManagement"
+| where ActivityDisplayName in ("Add delegated permission grant", "Add app role assignment to service principal")
+| mv-expand TargetResources
+| where TargetResources.displayName == "Microsoft Graph"
+| mv-expand TargetResources.modifiedProperties
+| extend InitiatedByUserPrincipalName = tostring(InitiatedBy.user.userPrincipalName)
+| extend AddedPermission = replace_string(tostring(TargetResources_modifiedProperties.newValue),'"','')
+| extend IP = tostring(todynamic(InitiatedBy).user.ipAddress)
+| extend ServicePrincipalAppId = iff(OperationName == "Add delegated permission grant", replace_string(tostring(todynamic(TargetResources).modifiedProperties[2].newValue),'"','') , replace_string(tostring(todynamic(TargetResources).modifiedProperties[5].newValue),'"',''))
+| where AddedPermission has_all ("Mail", ".")
+| summarize Permissions = make_set(AddedPermission) by ServicePrincipalAppId, IP, InitiatedByUserPrincipalName
+| extend TotalPermissions = array_length(Permissions)
+| project TotalPermissions, ServicePrincipalAppId, InitiatedByUserPrincipalName, IP, Permissions
+| sort by TotalPermissions
 ```
 
 ## KQL - Detect AzureHound by UserAgent
