@@ -1,0 +1,5 @@
+ServerName,IPAddress,Hostname
+adc2022,10.215.0.19,adc2022.anchorconst.local
+dc2022,192.168.2.7,dc2022.anchorconst.local
+dc1,192.168.2.6,dc1.anchorconst.local
+ais1,10.215.0.9,ais1.anchorconst.local

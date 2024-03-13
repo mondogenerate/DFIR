@@ -169,6 +169,10 @@ MicrosoftGraphActivityLogs
 | summarize by ObjectId, ObjectType
 ```
 
+Great EntraID Queries including BARK Research,= we have some of these implemented as Scheduled Queries:
+https://github.com/reprise99/Sentinel-Queries/tree/main/Azure%20AD%20Abuse%20Detection
+
+
 <br>
 
 # Consent Grant Attacks / Delegated Permissions
@@ -196,3 +200,4 @@ Connect-AzureAd
 # View Permission grants
 Get-AzureADServicePrincipal -All $true | .\Get-AzureADPSPermissionGrants.ps1 -Preload
 ```
+
