@@ -3,6 +3,12 @@
 # AzureAD IR Cheatsheet
 https://14518100.fs1.hubspotusercontent-na1.net/hubfs/14518100/Cheat%20Sheets/Azure%20Incident%20Response%20Cheat%20Sheet.pdf
 
+### Windows IR - BHIS/Patterson Cake
+Great scripts and methodology. The rapid investigations is a method for using velociraptor remotely and the other is great scripts and notes. 
+
+https://github.com/secure-cake/win-mal-investigations
+https://github.com/secure-cake/rapid-endpoint-investigations
+
 #### SocMonkey Cheatsheets
 https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/dfir-digital-forensics-and-incident-response
 https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/blue-defense
