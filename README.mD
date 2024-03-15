@@ -1,39 +1,39 @@
 ## DFIR Resources
 
 # AzureAD IR Cheatsheet
-https://14518100.fs1.hubspotusercontent-na1.net/hubfs/14518100/Cheat%20Sheets/Azure%20Incident%20Response%20Cheat%20Sheet.pdf
+- **https://14518100.fs1.hubspotusercontent-na1.net/hubfs/14518100/Cheat%20Sheets/Azure%20Incident%20Response%20Cheat%20Sheet.pdf**
 
 ### Windows IR - BHIS/Patterson Cake
 Great scripts and methodology. The rapid investigations is a method for using velociraptor remotely and the other is great scripts and notes. 
 
-https://github.com/secure-cake/win-mal-investigations
-https://github.com/secure-cake/rapid-endpoint-investigations
+- **https://github.com/secure-cake/win-mal-investigations**
+- **https://github.com/secure-cake/rapid-endpoint-investigations**
 
 #### SocMonkey Cheatsheets
-https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/dfir-digital-forensics-and-incident-response
-https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/blue-defense
+- **https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/dfir-digital-forensics-and-incident-response**
+- **https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/blue-defense**
 
 ### Sysmon Tools
-https://github.com/mellonaut/SysmonTools
+- **https://github.com/mellonaut/SysmonTools**
 
 ### Sentinel Queries
-https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Windows%20Security%20Events/Hunting%20Queries/CommandsexecutedbyWMIonnewhosts-potentialImpacket.yaml
+- **https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Windows%20Security%20Events/Hunting%20Queries/CommandsexecutedbyWMIonnewhosts-potentialImpacket.yaml**
 
 ### KQL for DFIR
-https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/leveraging-the-power-of-kql-in-incident-response/ba-p/3044795
-https://github.com/reprise99/kql-for-dfir
+- **https://techcommunity.microsoft.com/t5/microsoft-security-experts-blog/leveraging-the-power-of-kql-in-incident-response/ba-p/3044795**
+- **https://github.com/reprise99/kql-for-dfir**
 
 ### Great Breakdows of AAD IR / Official Module with KQL
-https://github.com/reprise99/kql-for-dfir/tree/main/Azure%20Active%20Directory
-https://github.com/reprise99/kql-for-dfir/blob/main/Combined%20Queries/README.md
-https://github.com/reprise99/kql-for-dfir/blob/main/Office%20365/README.md
+- **https://github.com/reprise99/kql-for-dfir/tree/main/Azure%20Active%20Directory**
+- **https://github.com/reprise99/kql-for-dfir/blob/main/Combined%20Queries/README.md**
+- **https://github.com/reprise99/kql-for-dfir/blob/main/Office%20365/README.md**
 
 ### Windows and AD
-https://github.com/reprise99/kql-for-dfir/blob/main/Windows/README.md
-https://github.com/reprise99/kql-for-dfir/blob/main/Active%20Directory/README.md
+- **https://github.com/reprise99/kql-for-dfir/blob/main/Windows/README.md**
+- **https://github.com/reprise99/kql-for-dfir/blob/main/Active%20Directory/README.md**
 
 ### KQL - The logs you DONT have
-https://kqlquery.com/posts/kql-incident-response-everything-else/
+- **https://kqlquery.com/posts/kql-incident-response-everything-else/**
 
 ## Initial Investigations
 Run our automated investigation tools first to see what picks up before we dive into KQL or endpoint
@@ -60,8 +60,6 @@ foreach ($module in $modules) {
 }
 [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 Invoke-WebRequest 'https://github.com/cisagov/Sparrow/raw/develop/Sparrow.ps1' -OutFile 'Sparrow.ps1' -UseBasicParsing; .\Sparrow.ps1
-
-
 
 
 # Hawk - IR Script https://cloudforensicator.com/documentation
